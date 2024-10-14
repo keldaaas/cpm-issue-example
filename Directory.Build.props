@@ -1,0 +1,19 @@
+<Project>
+  <PropertyGroup>
+    <!-- Use latest C# version, see https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/configure-language-version#configure-multiple-projects -->
+    <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+	
+    <!-- 
+        CS1591	Missing XML comment for publicly visible type or member 'Type_or_Member' 
+        https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-messages/cs1591
+    -->
+    <NoWarn>CS1591</NoWarn>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <ItemGroup Condition="$(MSBuildProjectName.EndsWith('.Tests'))">
+    <Compile Include="..\..\shared\GlobalUsings.Tests.cs" />
+  </ItemGroup>
+</Project>
